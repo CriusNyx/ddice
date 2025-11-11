@@ -1,0 +1,5 @@
+#!/bin/bash
+
+deno run build;
+sudo cp ./out/ddice /usr/bin;
+sudo chmod +x /usr/bin/ddice;
