@@ -34,16 +34,23 @@ const additionalHelpText = `\nExamples:\n${
   })
 }`;
 
-const parser = program.argument("[string]", "Dice to roll", "1d20").option(
-  "--save-table",
-  "Generate save table",
-).option(
-  "--pdf",
-  "Compute and graph probability distribution function for specified dice",
-).option("--many-pdf").option("--out-file <string>").addHelpText(
-  "afterAll",
-  additionalHelpText,
-)
+const parser = program.argument("[string]", "Dice to roll", "1d20")
+  .addHelpText(
+    "beforeAll",
+    "Small program to roll dice, or generates tables and graphs with probability functions.\n",
+  ).option(
+    "--save-table",
+    "Generate save table",
+  ).option(
+    "--pdf",
+    "Compute and graph probability distribution function for specified dice",
+  ).option("--many-pdf", "Print all pdf functions for 1 to 10 dice.").option(
+    "--out-file <string>",
+    "File to write graphics to.",
+  ).addHelpText(
+    "afterAll",
+    additionalHelpText,
+  )
   .action(main);
 
 type ProgramArgs = Parameters<Parameters<typeof parser.action>["0"]>;
